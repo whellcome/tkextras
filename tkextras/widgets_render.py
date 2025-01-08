@@ -19,10 +19,10 @@ class WidgetsRender:
         united_pack_params = self.__render_params.copy()
         if func == "pack":
             if "sticky" in united_pack_params:
-                united_pack_params["anchor"] = united_pack_params.pop("sticky")
+                united_pack_params.pop("sticky")
         elif func == "place":
             if "sticky" in united_pack_params:
-                united_pack_params["anchor"] = united_pack_params.pop("sticky")
+                united_pack_params = {}
         united_pack_params.update(pack_params)
         return united_pack_params
 
