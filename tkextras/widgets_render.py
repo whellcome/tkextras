@@ -24,7 +24,6 @@ class WidgetsRender:
             if "sticky" in united_pack_params:
                 united_pack_params["anchor"] = united_pack_params.pop("sticky")
         united_pack_params.update(pack_params)
-        print(united_pack_params)
         return united_pack_params
 
     def rgrid(self, obj: tk.Widget, render_params=None):
