@@ -4,6 +4,13 @@ Below is the documentation and setup for the `tkextras` module. It contains two 
 
 ---
 
+## Features
+- **Reusable Rendering Methods**: Simplify widget placement with `rgrid`, `rpack`, and `rplace`.
+- **Treeview Integration with pandas**: Synchronize and filter data between `ttk.Treeview` and `pandas.DataFrame`.
+- **Treeview Custom Widgets**: Add filtering and checkbox widgets for enhanced interactivity.
+
+---
+
 ## File Structure
 ```
 tkextras/
@@ -50,9 +57,3 @@ This file contains the `TreeviewDataFrame` class, which extends `ttk.Treeview` a
    pip install git+https://github.com/whellcome/tkextras.git
    ```
 
----
-
-## Features
-- **Reusable Rendering Methods**: Simplify widget placement with `rgrid`, `rpack`, and `rplace`.
-- **Treeview Integration with pandas**: Synchronize and filter data between `ttk.Treeview` and `pandas.DataFrame`.
-- **Treeview Custom Widgets**: Add filtering and checkbox widgets for enhanced interactivity.
