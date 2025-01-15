@@ -41,4 +41,5 @@ class ExampleFrame(WidgetsRender, ttk.Frame):
 
 
 app = ExampleFrame()
+app.winfo_toplevel().title("Example WidgetsRender")
 app.mainloop()
