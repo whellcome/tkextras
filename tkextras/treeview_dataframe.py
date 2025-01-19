@@ -144,6 +144,8 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         return not len(df[df.iloc[:, column] == self.svars["flag_symbol"]["uncheck"]])
 
     def all_checked_update(self, column=0):
+        if not("check_all" in self.svars):
+            return
         if column:
             self.svars['check_all'][column].set(self.is_all_checked(column))
         else:
