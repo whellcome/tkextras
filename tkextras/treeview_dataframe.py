@@ -5,20 +5,38 @@ from tkextras import WidgetsRender
 
 
 class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
+    _svars = {"flag_symbol": {
+        "check": "✔",
+        "uncheck": " "
+    }}
+    _svars["flag_values"] = {
+        _svars["flag_symbol"]["uncheck"]: _svars["flag_symbol"]["check"],
+        _svars["flag_symbol"]["check"]: _svars["flag_symbol"]["uncheck"]
+    }
+    _svars["check_all"] = {}
 
-    def __init__(self, parent, render_params=None, *args, **kwargs):
+    def __init__(self, parent, dataframe=None, render_params=None, *args, **kwargs):
         super().__init__(render_params, parent, *args, **kwargs)
         self.df = pd.DataFrame()
         self.filtered_df = pd.DataFrame()
         self.bind("<Button-1>", self.toggle_cell)
-        self.svars = {"flag_symbol": {
-            "check": "✔",
-            "uncheck": " "
-        }}
-        self.svars["flag_values"] = {
-            self.svars["flag_symbol"]["uncheck"]: self.svars["flag_symbol"]["check"],
-            self.svars["flag_symbol"]["check"]: self.svars["flag_symbol"]["uncheck"]
-        }
+        if not (dataframe is None):
+            self.make_tree(dataframe)
+
+    def make_tree(self, df:pd.DataFrame):
+        cols = df.columns.to_list()
+        for col in cols:
+            self.heading(col, text=col.capitalize())
+            if col != "name":
+                self.column(col, width=100, anchor="center")
+            else:
+                self.column(col, width=200, anchor="w")
+        for index, row in df.iterrows():
+            self.insert("", "end", values=tuple(row))
+
+    @property
+    def svars(self):
+        return self._svars.copy()
 
     def column(self, column, option=None, **kw):
         """
@@ -144,7 +162,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         return not len(df[df.iloc[:, column] == self.svars["flag_symbol"]["uncheck"]])
 
     def all_checked_update(self, column=0):
-        if not("check_all" in self.svars):
+        if not len(self.svars["check_all"]):
             return
         if column:
             self.svars['check_all'][column].set(self.is_all_checked(column))
@@ -152,6 +170,25 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
             for i in range(1, len(self.cget("columns"))):
                 self.svars['check_all'][i].set(self.is_all_checked(i))
         self.all_checked_event_evoke()
+
+    @classmethod
+    def transform_df(cls, load_df: pd.DataFrame, names_column: str) -> pd.DataFrame:
+        """
+        Moves the specified column to the first position in the DataFrame.
+        Replace boolean-like values in a DataFrame with custom symbols.
+        """
+
+        def replace_boolean_values(df):
+            return df.map(
+                lambda x: cls._svars["flag_symbol"]["check"] if pd.notna(x) and bool(x) and x not in {" ", "_"}
+                else cls._svars["flag_symbol"]["uncheck"])
+
+        if names_column in load_df.columns:
+            col_data = load_df.pop(names_column)
+            load_df = replace_boolean_values(load_df)
+            load_df.insert(0, names_column, col_data)
+
+        return load_df
 
     def filter_widget(self, parent):
         widget_frame = ttk.Frame(parent, width=150, borderwidth=1, relief="solid", padding=(2, 2))
@@ -195,7 +232,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
                 self.item(item, values=values)
 
         widget_frame = ttk.Frame(parent, padding=(2, 2))
-        self.svars["check_all"] = {}
+
         for i, col in enumerate(self.cget("columns")[1:]):
             ind = i + 1
             self.svars["check_all"][ind] = tk.IntVar(value=0)
