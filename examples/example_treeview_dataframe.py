@@ -19,7 +19,7 @@ class ExampleTreeviewDataFrame(WidgetsRender, ttk.Frame):
         # 1. Prepare a dataframe containing values 0 and 1,
         # values 1 are changed to tree.svars["flag_symbol"]["check"], 0 to tree.svars["flag_symbol"]["uncheck"]
         url = "https://raw.githubusercontent.com/whellcome/MLGliomaClassification/master/data/TCGA_InfoWithGrade.csv"
-        df = pd.read_csv(url).iloc[:, 4:9]
+        df = pd.read_csv(url).iloc[:99, 4:9]
         df['name'] = df.apply(lambda x: fake.name(), axis=1)  # a fake name to each row
         df = TreeviewDataFrame.transform_df(df,'name')
 
