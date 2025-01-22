@@ -1,5 +1,6 @@
 """
-Contains the implementation of the class TreeviewDataFrame
+Contains the implementation of the class TreeviewDataFrame.
+
 """
 import tkinter as tk
 from tkinter import ttk
@@ -14,6 +15,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     Special tree implementation for working with boolean marks (by default {"check": "✔", "uncheck": " "}).
     Supports optional Filtering and "mark all" widgets.
     Simple loading and unloading of a dataframe containing the current state of the tree for further work.
+
     """
     _svars = {
         "flag_symbol": {
@@ -45,9 +47,10 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def make_tree(self, df: pd.DataFrame):
         """
+        Builds the tree according to the dataframe
 
-        :param df:
-        :return:
+        :param df: the dataframe for building
+        :return: None
         """
         cols = df.columns.to_list()
         for col in cols:
@@ -63,6 +66,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def svars(self):
         """
         The attribute that automatically creates a copy _svars, so that each object has an isolated copy
+
         :return: dict, isolated svars
         """
         return self._svars.copy()
@@ -79,6 +83,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def insert(self, parent: str, index: int | Literal["end"], iid: str | int | None = None, **kw):
         """
            Inserts a new row into the Treeview and synchronizes it with the DataFrame.
+
            :param parent: Parent node for Treeview (usually "" for root-level items).
            :param index: Position to insert the item.
            :param iid: Unique identifier for the row. If None, Treeview generates one.
@@ -103,6 +108,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def set(self, item: str | int, column: None = None, value: None = None) -> dict[str, Any]:
         """
             Enhanced set method for synchronization with a DataFrame.
+
             :param item: The item ID (iid) in the Treeview.
             :param column: The column name to retrieve or update.
             :param value: The value to set; if None, retrieves the current value.
@@ -128,6 +134,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def item(self, item: str | int, option: Literal["text"] | None = None, **kw) -> str:
         """
         Override item method with DataFrame synchronization.
+
         :param item:
         :param option:
         :param kw:
@@ -147,6 +154,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def delete(self, *items: str | int, inplace=False):
         """
         Override delete method with DataFrame synchronization.
+
         :param items:
         :param inplace:
         :return:
@@ -159,6 +167,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def flag_inverse(self, value: str) -> str:
         """
+        Inverts the state of the cell flag
 
         :param value: incoming flag
         :return: inverted flag
@@ -169,6 +178,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def toggle_cell(self, event):
         """
         Handles cell clicks to change flags.
+
         :param event: click coordinates
         :return: None if the click is outside the target area
         """
@@ -185,8 +195,9 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def rebuild_tree(self, dataframe: pd.DataFrame = None):
         """
+        Rebuilds the tree according to the dataframe
 
-        :param dataframe:
+        :param dataframe: dataframe for rebuilding, if empty, self.df is used
         :return: None
         """
         if dataframe is None:
@@ -198,6 +209,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def filter_by_name(self, keyword: str = ""):
         """
         Filter DataFrame rows based on a keyword and update Treeview.
+
         :param keyword: filter string
         :return: None
         """
@@ -207,6 +219,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def filter_event_evoke(self):
         """
         Filter updated event.
+
         :return: None
         """
         self.event_generate("<<TreeFilterUpdated>>")
@@ -214,6 +227,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def all_checked_event_evoke(self):
         """
         Generation of an all_checked flag updated event
+
         :return:
         """
         self.event_generate("<<TreeCheckAllUpdated>>")
@@ -221,6 +235,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def is_all_checked(self, column: int) -> bool:
         """
         Checking the column status (all cells are marked)
+
         :param column: column number
         :return: column status
         """
@@ -230,6 +245,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
     def all_checked_update(self, column: int = 0):
         """
         Update the state of all (or one) flags, if column is not 0.
+
         :param column: column number
         :return: None
         """
@@ -247,16 +263,18 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         """
         Moves the specified column to the first position in the DataFrame.
         Replace boolean-like values in a DataFrame with custom symbols.
-        :param load_df:
-        :param names_column:
-        :return:
+
+        :param load_df: the dataframe being loaded
+        :param names_column: the name of the column that should become the first
+        :return: transformed data frame prepared for loading
         """
 
         def replace_boolean_values(df: pd.DataFrame):
             """
             Replace boolean-like values in a DataFrame with custom symbols
-            :param df:
-            :return:
+
+            :param df: the dataframe being loaded
+            :return: transformed data frame
             """
             return df.map(
                 lambda x: cls._svars["flag_symbol"]["check"] if pd.notna(x) and bool(x) and x not in {" ", "_"}
@@ -274,6 +292,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         Tree filtering widget by word or part of it
         "Filter" button Applies a filter
         "Restore" = clearing the filter value, returning the tree to its original state
+
         :param parent: specify the parent widget
         :return: ttk.Frame element ready to rendering
         """
@@ -286,6 +305,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         def apply_filter():
             """
             Applying a filter
+
             """
             self.filter_by_name(filter_entry.get())
             if len(self.filtered_df) == len(self.df):
@@ -296,6 +316,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         def clear_filter():
             """
             Clearing the filter value, returning the tree to its original state
+
             :return:  None
             """
             self.rebuild_tree()
@@ -314,12 +335,14 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         """
         The widget returns "check all" checkboxes for each column, starting with the second one.
         Interactive response to the use of a filter and clicking on cells
+
         :param parent: specify the parent widget
         :return: ttk.Frame element ready to rendering
         """
         def toggle_all(index: int):
             """
             Invert the value of the mark in the column specified by index
+
             :param index: column index
             :return: None
             """
