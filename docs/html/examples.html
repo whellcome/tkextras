@@ -77,7 +77,7 @@
 <span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
 <span class="linenos">26</span>        <span class="k">def</span> <span class="nf">fetch_quote</span><span class="p">():</span>
 <span class="linenos">27</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">28</span><span class="sd">            Getting a random quote from dummyjson.com</span>
+<span class="linenos">28</span><span class="sd">            Fetching a random quote from dummyjson.com</span>
 <span class="linenos">29</span><span class="sd">            The attributes of the rendered element are changed dynamically</span>
 <span class="linenos">30</span>
 <span class="linenos">31</span><span class="sd">            :return: None</span>
@@ -113,7 +113,7 @@
 <span class="linenos">61</span>        <span class="n">grid</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot; Fetch Quote! &quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">fetch_quote</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">head</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="linenos">62</span>
 <span class="linenos">63</span>
-<span class="hll"><span class="linenos">64</span><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># setting a parameter common to all elements (y offset)</span>
+<span class="hll"><span class="linenos">64</span><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># setting a parameter common to all elements (x, y offset)</span>
 </span><span class="linenos">65</span><span class="n">app</span><span class="o">.</span><span class="n">winfo_toplevel</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example WidgetsRender&quot;</span><span class="p">)</span>
 <span class="linenos">66</span><span class="n">app</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>

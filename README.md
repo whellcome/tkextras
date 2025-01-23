@@ -1,59 +1,92 @@
-### Documentation and Setup for `tkextras`
+# tkextras
 
-Below is the documentation and setup for the `tkextras` module. It contains two classes, `WidgetsRender` and `TreeviewDataFrame`, designed to simplify the rendering of Tkinter elements and enhance `ttk.Treeview` functionality by integrating it with a `pandas.DataFrame`.
+**Enhancing tkinter development with streamlined rendering and DataFrame-powered Treeview.**
 
----
+tkextras is a lightweight Python library that extends tkinter functionality, making GUI development easier and more
+efficient. It introduces a simplified widget rendering system and an extended Treeview component that integrates
+seamlessly with pandas DataFrames.
 
 ## Features
-- **Reusable Rendering Methods**: Simplify widget placement with `rgrid`, `rpack`, and `rplace`.
-- **Treeview Integration with pandas**: Synchronize and filter data between `ttk.Treeview` and `pandas.DataFrame`.
-- **Treeview Custom Widgets**: Add filtering and checkbox widgets for enhanced interactivity.
 
----
-
-## File Structure
-```
-tkextras/
-│
-├── __init__.py
-├── widgets_render.py
-└── treeview_dataframe.py
-```
-
-### `widgets_render.py`
-This file contains the `WidgetsRender` class, which provides methods (`rgrid`, `rpack`, `rplace`) for rendering Tkinter widgets with reusable parameter sets.
-
-#### Example Usage:
-```python
-import tkinter as tk
-from tkextras import WidgetsRender
-
-class ExampleApp(WidgetsRender, tk.Tk,):
-    def __init__(self):
-        super().__init__()
-        self.rgrid(tk.Label(self, text="Hello, World!"), dict(row=0, column=0))
-
-app = ExampleApp()
-app.mainloop()
-```
-
----
-
-### `treeview_dataframe.py`
-This file contains the `TreeviewDataFrame` class, which extends `ttk.Treeview` and integrates it with `pandas.DataFrame`, offering advanced features like filtering, synchronization, and custom widgets.
-
----
+- **WidgetsRender**: Unified interface for rendering widgets with `grid()`, `pack()`, and `place()` methods.
+- **TreeviewDataFrame**: Extended `ttk.Treeview` that synchronizes with `pandas.DataFrame`.
+- **Built-in Filtering**: Interactive filtering and flagging for table-based data.
+- **Event System Integration**: Custom events for enhanced user interaction.
+- **Sphinx Documentation**: Full API documentation and usage examples.
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/tkextras.git
+   git clone https://github.com/whellcome/tkextras.git
    cd tkextras
    ```
 
 2. Install the module:
-   ```bash
-   pip install git+https://github.com/whellcome/tkextras.git
-   ```
 
+```sh
+pip install git+https://github.com/whellcome/tkextras.git
+```
+
+## Usage
+
+### Rendering Widgets Easily
+
+```python
+import tkinter as tk
+from tkextras import WidgetsRender
+
+
+class ExampleApp(WidgetsRender, tk.Tk, ):
+  def __init__(self):
+    super().__init__()
+    self.rgrid(tk.Label(self, text="Hello, World!"), dict(row=0, column=0))
+
+
+app = ExampleApp()
+app.mainloop()
+```
+
+### Working with Treeview and DataFrames
+
+```python
+from tkextras import TreeviewDataFrame
+import tkinter as tk
+
+root = tk.Tk()
+tree = TreeviewDataFrame(root, columns=["Name", "Married", "Employed"], show='headings')
+tree.pack(fill="both", expand=True)
+
+tree.insert("", "end", values=("Alice", " ", " "))  # Normal rows addition
+tree.insert("", "end", values=("Bob", " ", " "))
+
+tree.make_tree()  # Tree design, can include a Dataframe(transformed, with identical columns) to loading
+tree.bind("<<TreeToggleCell>>", lambda x: print(tree.df))  # DataFrame synchronization
+
+root.mainloop()
+```
+
+## Documentation
+
+Complete documentation is available at:
+
+📖 **[Project Documentation](https://github.com/whellcome/tkextras/docs/html/index.html)**
+
+## Examples
+
+For real-world applications, see the **examples/** folder, or check out:
+
+- **MS Access to SQL Export Tool** ([GitHub](https://github.com/whellcome/MSAccessToSQL)) - Uses tkextras for UI
+  components.
+
+## Contributing
+
+Contributions are welcome! Open an issue or submit a pull request if you have improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+🚀 **Enhance your tkinter experience with tkextras!**

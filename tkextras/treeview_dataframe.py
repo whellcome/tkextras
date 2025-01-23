@@ -29,7 +29,8 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         _svars["flag_symbol"]["check"]: _svars["flag_symbol"]["uncheck"]
     }
 
-    def __init__(self, parent: tk.Widget, dataframe: pd.DataFrame = None, render_params: dict = None, *args, **kwargs):
+    def __init__(self, parent: tk.Widget | tk.Tk, dataframe: pd.DataFrame = None, render_params: dict = None,
+                 *args, **kwargs):
         """
 
         :param parent:
@@ -39,28 +40,35 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         :param kwargs:
         """
         super().__init__(render_params, parent, *args, **kwargs)
-        self.df = pd.DataFrame()
-        self.filtered_df = pd.DataFrame()
+        self.df = pd.DataFrame(columns=self.cget("columns"))
+        self.filtered_df = self.df.copy()
         self.bind("<Button-1>", self.toggle_cell)
         if not (dataframe is None):
             self.make_tree(dataframe)
 
-    def make_tree(self, df: pd.DataFrame):
+    def make_tree(self, df: pd.DataFrame = None):
         """
         Builds the tree according to the dataframe
 
         :param df: the dataframe for building
         :return: None
         """
-        cols = df.columns.to_list()
+        if not (df is None):
+            cols = df.columns.to_list()
+            if len(self.df):
+                self.delete(*self.get_children(), inplace=True)
+            for index, row in df.iterrows():
+                self.insert("", "end", values=tuple(row))
+        else:
+            cols = self.df.columns.to_list()
+        col_index = 0
         for col in cols:
             self.heading(col, text=col.capitalize())
-            if col != "name":
-                self.column(col, width=100, anchor="center")
-            else:
+            if col_index == 0:
                 self.column(col, width=200, anchor="w")
-        for index, row in df.iterrows():
-            self.insert("", "end", values=tuple(row))
+                col_index = 1
+            else:
+                self.column(col, width=100, anchor="center")
 
     @property
     def svars(self):
@@ -259,13 +267,13 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
         self.all_checked_event_evoke()
 
     @classmethod
-    def transform_df(cls, load_df: pd.DataFrame, names_column: str) -> pd.DataFrame:
+    def transform_df(cls, load_df: pd.DataFrame, first_column: str) -> pd.DataFrame:
         """
         Moves the specified column to the first position in the DataFrame.
         Replace boolean-like values in a DataFrame with custom symbols.
 
         :param load_df: the dataframe being loaded
-        :param names_column: the name of the column that should become the first
+        :param first_column: the name of the column that should become the first
         :return: transformed data frame prepared for loading
         """
 
@@ -280,10 +288,10 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
                 lambda x: cls._svars["flag_symbol"]["check"] if pd.notna(x) and bool(x) and x not in {" ", "_"}
                 else cls._svars["flag_symbol"]["uncheck"])
 
-        if names_column in load_df.columns:
-            col_data = load_df.pop(names_column)
+        if first_column in load_df.columns:
+            col_data = load_df.pop(first_column)
             load_df = replace_boolean_values(load_df)
-            load_df.insert(0, names_column, col_data)
+            load_df.insert(0, first_column, col_data)
 
         return load_df
 
