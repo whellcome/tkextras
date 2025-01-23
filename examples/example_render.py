@@ -20,24 +20,28 @@ class ExampleFrame(WidgetsRender, ttk.Frame):
 
         def fetch_quote():
             try:
-                response = requests.get("https://api.quotable.io/random")
-                quote['text'] = response.json()["content"]
+                response = requests.get("https://dummyjson.com/quotes/random")
+                res = response.json()
+                quote['text'] = res["quote"]
+                author['text'] = res["author"]
                 # The attributes of the rendered element are changed
             except:
                 quote['text'] = "This is a quote!"
-                # quotable.io is often unavailable, then we get a replacement quote
+                # dummyjson.com can be unavailable, then we get a replacement quote
 
         grid = self.rgrid
         normal = ("Helvetica", 13)
         italic = ("Helvetica", 11, "italic")
+        underline = ("Helvetica", 11, "underline")
 
         grid(self)
         grid(tk.Label(self, text="Click the button and get a quote.", font=normal),
              dict(row=0, column=0, columnspan=3, pady=5))
         # there is no need to explicitly create a variable to render an object
         quote = grid(ttk.Label(self, text="", wraplength=250, font=italic), dict(row=1, column=0, columnspan=3))
+        author = grid(ttk.Label(self, text="", font=underline), dict(row=2, column=0, columnspan=3, sticky="e"))
         # in one command we get a fully rendered object
-        grid(tk.Button(self, text=" Fetch Quote! ", command=fetch_quote, font=normal), dict(row=2, column=1, pady=5))
+        grid(tk.Button(self, text=" Fetch Quote! ", command=fetch_quote, font=normal), dict(row=3, column=1, pady=5))
 
 
 app = ExampleFrame()
