@@ -107,7 +107,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def set(self, item: str | int, column: None = None, value: None = None) -> dict[str, Any]:
         """
-            Enhanced set method for synchronization with a DataFrame.
+            Enhanced tt.Treeview set method for synchronization with a DataFrame.
 
             :param item: The item ID (iid) in the Treeview.
             :param column: The column name to retrieve or update.
@@ -133,7 +133,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def item(self, item: str | int, option: Literal["text"] | None = None, **kw) -> str:
         """
-        Override item method with DataFrame synchronization.
+        Override tk.Treeview item method with DataFrame synchronization.
 
         :param item:
         :param option:
@@ -153,7 +153,7 @@ class TreeviewDataFrame(WidgetsRender, ttk.Treeview):
 
     def delete(self, *items: str | int, inplace=False):
         """
-        Override delete method with DataFrame synchronization.
+        Override tk.Treeview delete method with DataFrame synchronization.
 
         :param items:
         :param inplace:
