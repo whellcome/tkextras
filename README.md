@@ -70,7 +70,7 @@ root.mainloop()
 
 Complete documentation is available at:
 
-📖 **[Project Documentation](https://github.com/whellcome/tkextras/docs/html/index.html)**
+📖 **[Project Documentation](https://html-preview.github.io/?url=https://github.com/whellcome/tkextras/blob/master/docs/html/index.html)**
 
 ## Examples
 
