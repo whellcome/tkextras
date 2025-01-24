@@ -67,8 +67,9 @@ tree.bind("<<TreeToggleCell>>", lambda x: print(tree.df))  # DataFrame synchroni
 
 root.mainloop()
 ```
-Advanced **[working example](examples/example_treeview_dataframe.py)** of TreeviewDataFrame application
+Advanced **[working example](examples/example_treeview_dataframe.py)** of TreeviewDataFrame application:
 
+![Example TreeviewDataFrame](https://raw.githubusercontent.com/whellcome/tkextras/4318f6286a884fd38f3a8827b05bf871910e6a30/example_treeview_dataframe.png)
 
 ## Documentation
 
