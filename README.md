@@ -46,6 +46,8 @@ class ExampleApp(WidgetsRender, tk.Tk, ):
 app = ExampleApp()
 app.mainloop()
 ```
+Advanced **[working example](examples/example_widgets_render.py)** of WidgetsRender application
+
 
 ### Working with Treeview and DataFrames
 
@@ -65,6 +67,8 @@ tree.bind("<<TreeToggleCell>>", lambda x: print(tree.df))  # DataFrame synchroni
 
 root.mainloop()
 ```
+Advanced **[working example](examples/example_treeview_dataframe.py)** of TreeviewDataFrame application
+
 
 ## Documentation
 
