@@ -1,9 +1,7 @@
-sphinx
-sphinx_rtd_theme
-sphinx.ext.autodoc
-sphinx.ext.autodoc.typehints
-sphinx.ext.viewcode
-sphinx.ext.coverage
-autodocsumm
-sphinx.ext.autosummary
-sphinxcontrib-autodoc-pydantic
+sphinx>=8.1.3
+sphinx-rtd-theme>=3.0.2
+sphinx-autodoc-typehints>=1.24.0
+sphinx-autosummary-accessors>=0.3.0
+sphinxcontrib-autodoc-pydantic>=2.0.0
+sphinx-copybutton>=0.5.0
+autodocsumm>=0.2.0
