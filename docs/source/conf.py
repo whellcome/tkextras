@@ -79,3 +79,4 @@ autodoc_default_options = {
 autoclass_content = 'class'
 autodoc_typehints = 'signature'
 autodoc_typehints_format = 'short'
+autosummary_generate = True

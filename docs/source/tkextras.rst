@@ -6,9 +6,10 @@ This module enhances `ttk.Treeview` by integrating `pandas.DataFrame`,
 allowing dynamic filtering, checkbox handling, and event management.
 
 .. automodule:: tkextras.treeview_dataframe
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :autosummary:
 
 Widgets Render
 -------------------------------
@@ -17,7 +18,7 @@ This module provides a simplified way to handle widget layouts (`grid`, `pack`, 
 
 
 .. automodule:: tkextras.widgets_render
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :autosummary:
