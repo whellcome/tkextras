@@ -1,9 +1,12 @@
 Intro to TkeXtras
-===============
+=================
 
     | Enhancing tkinter development with streamlined rendering and DataFrame-powered Treeview.
 
-| tkextras is a lightweight Python library that extends tkinter functionality, making GUI development easier and more efficient. It introduces a simplified widget rendering system and an extended Treeview component that integrates seamlessly with pandas DataFrames.
+| **TkeXtras** is a lightweight Python library that extends tkinter functionality,
+| making GUI development easier and more efficient.
+| It introduces a simplified widget rendering system and an extended **Treeview**
+| component that integrates seamlessly with pandas **DataFrames**.
 
 Features.
 ---------
@@ -19,5 +22,5 @@ Features.
     - **Built-in Filtering:** Interactive filtering and flagging for table-based data.
     - **Event System Integration:** Custom events for enhanced user interaction.
 
-    .. image:: https://raw.githubusercontent.com/whellcome/MSAccessToSQL/e03aab63433e49e8dcef8de42879dfe68af4a748/access_sql_export.jpg
+    .. image:: https://raw.githubusercontent.com/whellcome/tkextras/6102d74ee49e144417c86ce657bea491db30a5f1/example2.png
         :alt: The new principle work example

@@ -75,7 +75,7 @@ Advanced **[working example](examples/example_treeview_dataframe.py)** of Treevi
 
 Complete documentation is available at:
 
-📖 **[Project Documentation](https://html-preview.github.io/?url=https://github.com/whellcome/tkextras/blob/master/docs/html/index.html)**
+[//]: # (📖 **[Project Documentation]&#40;https://html-preview.github.io/?url=https://github.com/whellcome/tkextras/blob/master/docs/html/index.html&#41;**)
 
 ## Examples
 

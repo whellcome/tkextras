@@ -1,4 +1,4 @@
-tkextras
+Modules
 ========
 
 .. toctree::

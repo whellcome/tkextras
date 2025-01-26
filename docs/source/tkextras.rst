@@ -1,29 +1,23 @@
-tkextras package
-================
 
-Submodules
-----------
-
-tkextras.treeview\_dataframe module
+Treeview DataFrame
 -----------------------------------
+
+This module enhances `ttk.Treeview` by integrating `pandas.DataFrame`,
+allowing dynamic filtering, checkbox handling, and event management.
 
 .. automodule:: tkextras.treeview_dataframe
    :members:
    :undoc-members:
    :show-inheritance:
 
-tkextras.widgets\_render module
+Widgets Render
 -------------------------------
+
+This module provides a simplified way to handle widget layouts (`grid`, `pack`, `place`).
+
 
 .. automodule:: tkextras.widgets_render
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: tkextras
-   :members:
-   :undoc-members:
-   :show-inheritance:
