@@ -1,0 +1,9 @@
+sphinx
+sphinx_rtd_theme
+sphinx.ext.autodoc
+sphinx.ext.autodoc.typehints
+sphinx.ext.viewcode
+sphinx.ext.coverage
+autodocsumm
+sphinx.ext.autosummary
+sphinxcontrib-autodoc-pydantic
