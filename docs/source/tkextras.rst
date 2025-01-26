@@ -1,3 +1,4 @@
+
 Widgets Render
 -------------------------------
 
@@ -23,4 +24,3 @@ allowing dynamic filtering, checkbox handling, and event management.
     :undoc-members:
     :show-inheritance:
     :autosummary:
-
