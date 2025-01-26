@@ -80,3 +80,4 @@ autoclass_content = 'class'
 autodoc_typehints = 'signature'
 autodoc_typehints_format = 'short'
 autosummary_generate = True
+html_favicon = 'https://raw.githubusercontent.com/whellcome/tkextras/e2a3c2f1e28268206e8f0b85fae50e6ef29a6c3c/brics-logo_250.png'
