@@ -12,8 +12,10 @@
 #
 import os
 import sys
+from sphinx.builders.html import StandaloneHTMLBuilder
+
 sys.path.insert(0, os.path.abspath('../..'))
-# sys.argv.extend(["-d", os.path.abspath("../html")])
+
 
 # -- Project information -----------------------------------------------------
 
@@ -28,10 +30,14 @@ author = 'Dietmar Steinle'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme',
     'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    # 'autodocsumm',
-    'sphinx.ext.coverage'
+    'sphinx.ext.autodoc.typehints',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.coverage',
+    'autodocsumm',
+    'sphinx.ext.autosummary',
+    'sphinxcontrib.autodoc_pydantic'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,9 +54,28 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'classic'
+
+StandaloneHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg'
+]
+
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': False,
+    'show-inheritance': True,
+    'member-order': 'bysource',
+    'ignore-module-all': True,
+}
+autoclass_content = 'class'
+autodoc_typehints = 'signature'
+autodoc_typehints_format = 'short'
