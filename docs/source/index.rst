@@ -3,20 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TkExtras's documentation!
+Welcome to TkeXtras's documentation!
 ====================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. container::
 
+   | |logo|
+   | There is contained main documentation for the `TkExtras <https://github.com/whellcome/tkextras>`__.
+
+.. toctree::
+   :maxdepth: 1
+
+   tkextras/index
    modules
    examples
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+**TkeXtras** is a Python library that extends tkinter functionality
+
+.. |logo| image:: https://raw.githubusercontent.com/whellcome/tkextras/e2a3c2f1e28268206e8f0b85fae50e6ef29a6c3c/brics-logo_250.png

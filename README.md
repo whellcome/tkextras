@@ -40,8 +40,8 @@ from tkextras import WidgetsRender
 class ExampleApp(WidgetsRender, tk.Tk, ):
   def __init__(self):
     super().__init__()
-    self.rgrid(tk.Label(self, text="Hello, World!"), dict(row=0, column=0))
-
+    lable = self.rgrid(tk.Label(self), dict(row=0, column=0))
+    lable['text'] = "Hello, World!"
 
 app = ExampleApp()
 app.mainloop()
