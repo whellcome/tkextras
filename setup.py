@@ -9,6 +9,12 @@ setup(
     author="Dietmar Steinle",
     license="MIT",
     url="https://github.com/whellcome/tkextras",
+    download_url='https://github.com/whellcome/tkextras/archive/master.zip',
+    project_urls={
+        "Documentation": "https://tkextras.readthedocs.io/",
+        "Source Code": "https://github.com/whellcome/tkextras",
+        "Examples": "https://github.com/whellcome/tkextras/tree/master/examples",
+    },
     packages=find_packages(),
     keywords=["tkinter", "ttk", "gui"],
     classifiers=[
@@ -20,7 +26,6 @@ setup(
     ],
     install_requires=[
         "pandas>=1.0",
-        "tk",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.9",
 )

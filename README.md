@@ -12,7 +12,7 @@ seamlessly with pandas DataFrames.
 - **TreeviewDataFrame**: Extended `ttk.Treeview` that synchronizes with `pandas.DataFrame`.
 - **Built-in Filtering**: Interactive filtering and flagging for table-based data.
 - **Event System Integration**: Custom events for enhanced user interaction.
-- **Sphinx Documentation**: Full API documentation and usage examples.
+- **Sphinx Documentation**: Full [API documentation](https://tkextras.readthedocs.io) and usage examples.
 
 ## Installation
 
@@ -75,7 +75,7 @@ Advanced **[working example](examples/example_treeview_dataframe.py)** of Treevi
 
 Complete documentation is available at:
 
-[//]: # (📖 **[Project Documentation]&#40;https://html-preview.github.io/?url=https://github.com/whellcome/tkextras/blob/master/docs/html/index.html&#41;**)
+📖 **[Project Documentation](https://tkextras.readthedocs.io)**
 
 ## Examples
 
@@ -87,6 +87,9 @@ For real-world applications, see the **examples/** folder, or check out:
 ## Contributing
 
 Contributions are welcome! Open an issue or submit a pull request if you have improvements or bug fixes.
+
+> **Need support or have a suggestion?** 🚀🔥  
+> Please open an [issue](https://github.com/whellcome/tkextras/issues) on GitHub.
 
 ## License
 
