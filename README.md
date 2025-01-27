@@ -16,17 +16,17 @@ seamlessly with pandas DataFrames.
 
 ## Installation
 
-1. Clone the repository:
+1. Install the module:
+
+    ```sh
+    pip install tkextras
+    ```
+
+2. Clone the repository:
    ```bash
    git clone https://github.com/whellcome/tkextras.git
    cd tkextras
    ```
-
-2. Install the module:
-
-```sh
-pip install git+https://github.com/whellcome/tkextras.git
-```
 
 ## Usage
 

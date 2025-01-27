@@ -12,7 +12,7 @@ setup(
     download_url='https://github.com/whellcome/tkextras/archive/master.zip',
     project_urls={
         "Documentation": "https://tkextras.readthedocs.io/",
-        "Source Code": "https://github.com/whellcome/tkextras",
+        "Source Code": "https://github.com/whellcome/tkextras/tree/master/tkextras",
         "Examples": "https://github.com/whellcome/tkextras/tree/master/examples",
     },
     packages=find_packages(),
@@ -21,7 +21,7 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Topic :: Software Development :: Libraries :: Tcl/Tk Extensions",
+        "Topic :: Software Development :: Libraries :: Tcl Extensions",
         "Topic :: Software Development :: Libraries :: Python Modules"
     ],
     install_requires=[
